@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+        <title>Sign In</title>
+    </head>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(0,0,50,0.8),rgba(0,0,50,0.8)),url("bg_img.jpg");
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+.form {
+    width: 90%;
+    max-width: 450px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #fff;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    text-align: center;
+}
+
+.form h1 {
+    font-size: 2rem;
+    margin-bottom: 4rem;
+    color: #3c003a;
+    position: relative;
+}
+
+.form h1::after {
+    content: "";
+    width: 2rem;
+    height: 0.25rem;
+    border-radius: 0.18rem;
+    background: #3c003a;
+    position: absolute;
+    bottom: -1rem;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.input-space {
+    margin: 1.5rem;
+    background: #eaeaea;
+    border-radius: 0.15rem;
+    display: flex;
+    align-items: center;
+    max-height: 5rem;
+    transition: max-height 0.5s;
+    overflow: hidden;
+}
+
+input {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    padding: 1rem;
+}
+
+.input-space i {
+    margin-left: 1rem;
+    color: #999;
+}
+
+.form p {
+    text-align: left;
+    font-size: 1rem;
+    margin-left: 1.5rem;
+    margin-top: -1rem;
+}
+
+.form p a {
+    color: #3c003a;
+    text-decoration: none;
+}
+
+.buttons {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    margin-left: 1.5rem;
+    margin-top: 1rem;
+}
+
+.buttons button {
+    flex-basis: 48%;
+    background: #3c003a;
+    color: #fff;
+    height: 2rem;
+    border-radius: 1rem;
+    border: 0;
+}
+
+.buttons .disabled {
+    background: #eaeaea;
+    color: #555;
+}
+    </style>
+    <body>
+        <div class="container">
+            <div class="form">
+                <h1 id="title">Sign In</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="inputs">
+                        <div class="input-space">
+                            <i class="fa-solid fa-user"></i>
+                            <input type="text" placeholder="Enter your username" id="user-input" name="username" required>
+                        </div>
+                        <div class="input-space">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" placeholder="Enter your password" id="password-input" name="password" required>
+                        </div>
+                    </div>
+                    <p>Don't have an account?<a href="{%url 'signup'%}"> Click here</a></p>
+                    <div class="buttons">
+                        <button type="submit" id="signuin-btn">Sign In</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
